@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  sipp_alice:
+    image: ctaloi/sipp
+    container_name: sipp_alice
+    volumes:
+      - ./sipp:/sipp   # Pasta local com cenários XML e audio.wav
+    stdin_open: true
+    tty: true
+    ports:
+      - "5060:5060/udp"   # Porta SIP padrão Alice
+      - "5060:5060/tcp"
+    entrypoint: ["/bin/bash"]
+
+  sipp_bob:
+    image: ctaloi/sipp
+    container_name: sipp_bob
+    volumes:
+      - ./sipp:/sipp
+    stdin_open: true
+    tty: true
+    ports:
+      - "5064:5060/udp"   # Porta alternativa Bob para evitar conflito
+      - "5064:5060/tcp"
+    entrypoint: ["/bin/bash"]
