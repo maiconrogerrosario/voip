@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  asterisk:
+    image: andrius/asterisk:latest
+    container_name: asterisk
+    networks:
+      - sipnet
+    ports:
+      - "5061:5060/udp"
+      - "5061:5060/tcp"
+      - "8088:8088/tcp"
+      - "10000-20000:10000-20000/udp"
+    volumes:
+      - ./asterisk:/etc/asterisk
+    restart: unless-stopped
+
+networks:
+  sipnet:
+    external: true

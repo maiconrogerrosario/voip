@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  kamailio:
+    image: ghcr.io/kamailio/kamailio:latest
+    container_name: kamailio
+    networks:
+      - sipnet
+    ports:
+      - "5060:5060/udp"
+      - "5060:5060/tcp"
+    volumes:
+      - ./kamailio.cfg:/usr/local/etc/kamailio/kamailio.cfg
+    restart: unless-stopped
+
+networks:
+  sipnet:
+    external: true
