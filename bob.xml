@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+<scenario name="Bob Recebe Alice">
+
+  <!-- Recebe INVITE -->
+  <recv request="INVITE"/>
+
+  <!-- 100 Trying -->
+  <send>
+  <![CDATA[
+SIP/2.0 100 Trying
+  ]]>
+  </send>
+
+  <!-- 180 Ringing -->
+  <send>
+  <![CDATA[
+SIP/2.0 180 Ringing
+  ]]>
+  </send>
+
+  <!-- 200 OK -->
+  <send>
+  <![CDATA[
+SIP/2.0 200 OK
+  ]]>
+  </send>
+
+  <!-- Recebe ACK -->
+  <recv request="ACK"/>
+
+  <!-- Recebe RTP -->
+  <recv rtp="audio.wav">
+  <![CDATA[
+  ]]>
+  </recv>
+
+</scenario>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+<scenario name="Alice to Bob">
+
+  <!-- INVITE -->
+  <send>
+    <![CDATA[
+INVITE sip:6002@18.228.226.57:5061 SIP/2.0
+Via: SIP/2.0/UDP [local_ip]:[local_port];branch=z9hG4bK-[branch]
+From: <sip:6001@18.228.226.57>;tag=[call_number]
+To: <sip:6002@18.228.226.57>
+Call-ID: [call_id]
+CSeq: 1 INVITE
+Contact: <sip:6001@[local_ip]:[local_port]>
+Content-Type: application/sdp
+Content-Length: [len]
+    ]]>
+  </send>
+
+  <recv response="100" optional="true"/>
+  <recv response="180"/>
+  <recv response="200"/>
+
+  <!-- ACK -->
+  <send>
+    <![CDATA[
+ACK sip:6002@18.228.226.57:5061 SIP/2.0
+Via: SIP/2.0/UDP [local_ip]:[local_port];branch=z9hG4bK-[branch]
+From: <sip:6001@18.228.226.57>;tag=[call_number]
+To: <sip:6002@18.228.226.57>
+Call-ID: [call_id]
+CSeq: 1 ACK
+Contact: <sip:6001@[local_ip]:[local_port]>
+Content-Length: 0
+    ]]>
+  </send>
+
+  <!-- RTP -->
+  <send rtp="audio.wav"/>
+
+</scenario>

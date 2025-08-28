@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+<scenario name="Register + Call">
+
+  <!-- REGISTER -->
+  <send>
+    <![CDATA[
+REGISTER sip:18.228.226.57:5061 SIP/2.0
+Via: SIP/2.0/UDP [local_ip]:[local_port];branch=z9hG4bK-[branch]
+Max-Forwards: 70
+From: <sip:6001@18.228.226.57>;tag=[call_number]
+To: <sip:6001@18.228.226.57>
+Call-ID: [call_id]
+CSeq: 1 REGISTER
+Contact: <sip:6001@[local_ip]:[local_port]>
+Expires: 3600
+Content-Length: 0
+    ]]>
+  </send>
+  <recv response="200"/>
+
+ 

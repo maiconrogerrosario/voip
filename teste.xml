@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+<scenario name="OPTIONS Test">
+  <send>
+    <![CDATA[
+    OPTIONS sip:[field0]@127.0.0.1:5060 SIP/2.0
+    Via: SIP/2.0/UDP [local_ip]:[local_port];branch=[branch]
+    From: <sip:sipp@[local_ip]>;tag=[call_number]
+    To: <sip:[field0]@127.0.0.1>
+    Call-ID: [call_id]
+    CSeq: 1 OPTIONS
+    Max-Forwards: 70
+    Content-Length: 0
+    ]]>
+  </send>
+  <recv response="200"/>
+</scenario>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<scenario name="Register User Agent">
+  <send>
+    <![CDATA[
+    REGISTER sip:18.228.226.57:5060 SIP/2.0
+    Via: SIP/2.0/UDP [local_ip]:[local_port];branch=[branch]
+    Max-Forwards: 70
+    From: <sip:1000@18.228.226.57>;tag=[call_number]
+    To: <sip:1000@18.228.226.57>
+    Call-ID: [call_id]
+    CSeq: 1 REGISTER
+    Contact: <sip:1000@[local_ip]:[local_port]>
+    User-Agent: SIPp-Agent/1.0
+    Expires: 3600
+    Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv response="401" optional="true"/>
+  <recv response="200" optional="false"/>
+</scenario>

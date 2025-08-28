@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<scenario name="OPTIONS Test">
+
+  <!-- Envia uma requisição OPTIONS -->
+  <send>
+    <![CDATA[
+    OPTIONS sip:1000@18.228.226.57:5063 SIP/2.0
+    Via: SIP/2.0/UDP [local_ip]:[local_port];branch=[branch]
+    Max-Forwards: 70
+    To: <sip:1000@18.228.226.57>
+    From: <sip:sipp@[local_ip]>;tag=[call_number]
+    Call-ID: [call_id]
+    CSeq: 1 OPTIONS
+    Contact: <sip:sipp@[local_ip]:[local_port]>
+    Content-Length: 0
+
+    ]]>
+  </send>
+
+  <!-- Recebe a resposta 200 OK -->
+  <recv response="200">
+    <action>
+      log("200 OK recebido do Kamailio\n");
+    </action>
+  </recv>
+
+</scenario>
